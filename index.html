@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Passenger Satisfaction Recommender System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L35 15V25L20 35L5 25V15L20 5Z" fill="url(#gradient)" stroke="#fff" stroke-width="2"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="5" y1="5" x2="35" y2="35">
+                                <stop offset="0%" stop-color="#667eea"/>
+                                <stop offset="100%" stop-color="#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div>
+                        <h1>Airline Satisfaction RecSys</h1>
+                        <p class="subtitle">Content-Based • Collaborative • Hybrid Methods</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalPassengers">0</div>
+                        <div class="stat-label">Total Passengers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="satisfactionRate">0%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="segmentCount">0</div>
+                        <div class="stat-label">Customer Segments</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Prototype Demo Section -->
+            <section class="prototype-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M2 12h20"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    Interactive Prototype - Predict Your Satisfaction
+                </h2>
+                
+                <div class="prototype-content">
+                    <div class="prototype-form">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600;">Enter Your Travel Preferences</h3>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Travel Class</label>
+                                <select id="protoClass" class="form-input">
+                                    <option value="Business">Business</option>
+                                    <option value="Eco Plus">Economy Plus</option>
+                                    <option value="Eco" selected>Economy</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Trip Type</label>
+                                <select id="protoTripType" class="form-input">
+                                    <option value="Business travel">Business Travel</option>
+                                    <option value="Personal Travel" selected>Personal Travel</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Customer Type</label>
+                                <select id="protoCustomerType" class="form-input">
+                                    <option value="Loyal Customer" selected>Loyal Customer</option>
+                                    <option value="disloyal Customer">First-time Flyer</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Flight Distance (miles)</label>
+                                <input type="number" id="protoDistance" class="form-input" value="500" min="50" max="5000" step="50">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Age</label>
+                                <input type="number" id="protoAge" class="form-input" value="35" min="7" max="85">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Expected Delay (minutes)</label>
+                                <input type="number" id="protoDelay" class="form-input" value="0" min="0" max="300" step="5">
+                            </div>
+                        </div>
+                        
+                        <button id="predictBtn" class="predict-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                            Predict Satisfaction & Get Recommendations
+                        </button>
+                    </div>
+                    
+                    <div id="prototypeResults" class="prototype-results">
+                        <div class="empty-state" style="padding: 2rem;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.5;">
+                                <path d="M12 2v20M2 12h20"/>
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <p>Enter your travel preferences and click "Predict" to see your satisfaction probability and personalized recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Strategy Section -->
+            <section class="strategy-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    Business Strategy & Segmentation
+                </h2>
+                <div class="strategy-content">
+                    <div class="insight-box">
+                        <h3>Key Business Insight</h3>
+                        <p>Our analysis reveals that <strong>customer satisfaction is not uniform</strong> across passenger segments. Just like smartphone buyers (iPhone loyalists vs. price-sensitive consumers), airline passengers have distinct needs and expectations based on their travel class, purpose, and loyalty status.</p>
+                        <p>A one-size-fits-all recommendation approach would fail to capture these nuances. Our system uses <strong>strategic segmentation</strong> to deliver personalized service improvement recommendations.</p>
+                    </div>
+                    
+                    <div class="segments-grid" id="segmentsGrid">
+                        <!-- Segments will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDA Section -->
+            <section class="eda-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    Exploratory Data Analysis (EDA)
+                </h2>
+                
+                <div class="eda-content">
+                    <!-- Key Findings -->
+                    <div class="eda-findings">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">📊 Key Findings from 129,880 Passengers</h3>
+                        <div class="findings-grid" id="edaFindings">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Feature Importance Chart -->
+                    <div class="eda-chart-section">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">🎯 Feature Importance (Correlation with Satisfaction)</h3>
+                        <div class="features-chart" id="featuresChart">
+                            <!-- Feature importance bars will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Distribution Analysis -->
+                    <div class="eda-distributions">
+                        <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">📈 Data Distributions</h3>
+                        <div class="distribution-grid" id="distributionGrid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendation Engine -->
+            <section class="recommendation-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    Intelligent Recommendation Engine
+                </h2>
+                
+                <div class="recommendation-controls">
+                    <div class="control-group">
+                        <label for="segmentSelector">Select Customer Segment:</label>
+                        <select id="segmentSelector" class="segment-select">
+                            <option value="">Choose a segment...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="recommendationType">RecSys Method:</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="recType" value="service" checked>
+                                <span>Content-Based Filtering</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="recType" value="passenger">
+                                <span>Collaborative Filtering</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="recType" value="analytics">
+                                <span>Hybrid Approach</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button id="generateBtn" class="generate-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                        Generate Recommendations
+                    </button>
+                </div>
+
+                <div id="recommendationResults" class="recommendation-results">
+                    <!-- Results will be populated here -->
+                </div>
+            </section>
+
+            <!-- Passenger Explorer -->
+            <section class="explorer-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                    Passenger Data Explorer
+                </h2>
+                <div id="passengerExplorer" class="passenger-grid">
+                    <!-- Passenger cards will be populated here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Airline Passenger Satisfaction Recommender System | 129,880 Real Passengers | Methods: Content-Based Filtering, Collaborative Filtering, Hybrid Approach</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
