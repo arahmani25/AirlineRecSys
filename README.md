@@ -174,33 +174,6 @@ As the professor mentioned with the smartphone example:
 
 ---
 
-## 🎤 Presentation Tips (4 Minutes)
-
-### Opening (30 seconds)
-> "I implemented three recommender system methods from our class: Content-Based Filtering using customer segments, Collaborative Filtering with cosine similarity, and a Hybrid Approach combining both. The system analyzes 129,880 real airline passengers."
-
-### Method 1: Content-Based (60 seconds)
-- Show segment cards
-- Explain segmentation strategy (like smartphone buyers)
-- Select "Premium Business" → Generate recommendations
-- Point out: "Recommendations based on segment characteristics"
-
-### Method 2: Collaborative Filtering (60 seconds)
-- Switch to "Collaborative Filtering"
-- Generate recommendations
-- Show similar passengers with IDs
-- Explain: "Using cosine similarity on service ratings to find similar passengers"
-
-### Method 3: Hybrid (60 seconds)
-- Switch to "Hybrid Approach"
-- Generate comprehensive analytics
-- Show how it combines multiple signals
-- Explain: "Combining content features + user similarity + correlation analysis"
-
-### Closing (30 seconds)
-> "This demonstrates that understanding customer segments first, then applying collaborative filtering, creates more actionable recommendations than generic matrix factorization. All data is real - 129,880 passengers from the CSV files."
-
----
 
 ## 📈 Technical Implementation
 
