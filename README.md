@@ -156,21 +156,6 @@ As the professor mentioned with the smartphone example:
 3. **Business Economy** (31.5% satisfied) → Upsell opportunities
 4. **Premium Leisure** (11.7% satisfied) → Enhance experience
 
----
-
-## 🎯 Exam Criteria Alignment
-
-| Criteria | Score | Evidence |
-|----------|-------|----------|
-| Business Value & Uniqueness | 4/4 | Strategic segmentation + proper RecSys methods |
-| Data & Approach Selection | 4/4 | 129,880 real passengers, justified methodology |
-| EDA Slide | 4/4 | Feature importance, segment analysis, insights |
-| Modelling Justification | 3/3 | 3 RecSys methods from class properly implemented |
-| Concept of Proof | 3/3 | Working prototype with real data and results |
-| UI/UX Consideration | 2/2 | Modern interface, clear method selection |
-| Presentation Clarity | 2/2 | Clean structure, professional design |
-| Avoidance of Complexity | 2/2 | Focused RecSys scope, appropriate methods |
-| **TOTAL** | **24/25** | **Strong performance** |
 
 ---
 
@@ -227,13 +212,6 @@ insights = analyze(segment_stats + similarity_scores + correlations)
 5. ✅ **Actionable Output** - Clear recommendations with expected impact
 6. ✅ **Multiple Methods** - Can compare Content-Based vs Collaborative vs Hybrid
 
-### Alignment with Course:
-- ✅ Content-Based Filtering (Lecture 1)
-- ✅ Collaborative Filtering (Lecture 3)
-- ✅ Hybrid Recommender System (Lecture 4)
-- ✅ Feature importance analysis
-- ✅ Similarity metrics (cosine similarity)
-
 ---
 
 ## 📊 Results Summary
@@ -255,27 +233,6 @@ insights = analyze(segment_stats + similarity_scores + correlations)
 
 ---
 
-## 🎓 Learning Outcomes
-
-This project demonstrates:
-1. **Content-Based Filtering** - Using item/user features for recommendations
-2. **Collaborative Filtering** - Finding similar users based on ratings
-3. **Hybrid Methods** - Combining multiple approaches
-4. **Feature Engineering** - Creating meaningful segments
-5. **Similarity Metrics** - Cosine similarity implementation
-6. **Business Strategy** - Actionable insights for stakeholders
-
----
-
-## 🏆 Expected Score: 24-25/25
-
-**Strengths**:
-- Proper implementation of 3 RecSys methods from class
-- 129,880 real passengers (no mock data)
-- Strategic approach (smartphone buyer analogy)
-- Working prototype with clear results
-- Professional UI showing all methods
-
 **Presentation Strategy**:
 - Emphasize the 3 methods taught in class
 - Show how they work together (hybrid)
@@ -284,4 +241,4 @@ This project demonstrates:
 
 ---
 
-**System is ready for presentation! All 4 files working perfectly.** 🎉
+
